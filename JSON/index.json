@@ -1,0 +1,11 @@
+dataconfig={
+  "url": [
+ 
+    
+    // "https://gis.smarttvm.in/server/rest/services/TVM_PRJCT_SCTL/MapServer/6",
+    // "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/0",
+    // "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0",
+    // "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space/FeatureServer/0",
+    // "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0"
+  ]
+}

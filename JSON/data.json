@@ -1,0 +1,14 @@
+
+    
+  data_new={
+  "url": {
+    "parkinglot": "https://gis.smarttvm.in/server/rest/services/TVM_PRJCT_SCTL/MapServer/16",
+    "mosqito": "https://gis.smarttvm.in/server/rest/services/Mosquito_net/Mosquito_net/MapServer/17",
+    "Pipelines": "https://gis.smarttvm.in/server/rest/services/PTP_Pipeline/PTP_Pipeline/MapServer/0",
+    "Bus Shelter": "https://gis.smarttvm.in/server/rest/services/TVM_PRJCT_SCTL/MapServer/8",
+    "Drinking Water Kios": "https://gis.smarttvm.in/server/rest/services/TVM_PRJCT_SCTL/MapServer/6",
+    //  "MapServer":"https://gis.smarttvm.in/server/rest/services/TVM_PRJCT_SCTL/MapServer",
+    "Current Project": "https://gis.smarttvm.in/server/rest/services/Current_Projects/RunningProjects/FeatureServer/1"
+  },
+  "apiKey": "AAPK34718d32844f471398f573a6895476b8wt1f_qfca1TT5o40oA-I1y8UeQxw66lx3nSVUMFE5bSCOjfGhm-fNXxecPewthOf"
+}

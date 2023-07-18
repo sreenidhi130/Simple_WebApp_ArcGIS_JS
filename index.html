@@ -1,0 +1,428 @@
+<!--
+Hexamap Solutions Pvt. Ltd., 
+Developed For: Hexamap Solutions, Chennai
+======================================================
+Creation Date : 20-10-2022
+Creator Name : Sreenidi
+Version No. : 
+Major changes
+=============
+-->
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Web Map</title>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script> 
+  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+
+
+  
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <script src="https://js.arcgis.com/4.24/"></script>
+
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="JSON/index.json"></script>
+  <script type="text/javascript" src="json/data.json"></script>
+
+
+
+
+  <!-- <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
+
+   <!-- <script type="text/javascript" src="https://https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> --> 
+
+  <!-- <link rel="stylesheet" href=" https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+ -->
+
+
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" /> -->
+
+</head>
+
+<body>
+
+  <div id="viewDiv">
+  </div>
+  <div id="tableDiv" style="display: none;">
+    <div id="tabHead">
+      <img src="pics/closebutton.png" id="close_attribute_Tab" title="Close Feature table"
+        onclick="close_Butt_AttributeTab();">
+    </div>
+    <div id="tableContent">
+
+    </div>
+  </div>
+
+
+  <div id="tableSPATIALQRY_Div" style="display: none;">
+    <div id="tabHead">
+      <img src="pics/closebutton.png" id="close_attribute_Tab" title="Close Feature table"
+        onclick="close_Tab_SPATIALQRY_DIV();">
+    </div>
+    <table id="tableContent_SATIALQRY">
+
+    </table>
+  </div>
+
+
+  <!-- 
+    <div id="infoDiv">
+    </div> -->
+
+  <div id="toolbarDiv" style="display:none">
+    <div id="toolbar_head">
+      Measure Tool
+
+      <!-- <button class="esri-icon-close" title="Close"></button> -->
+      <img src="pics/closebutton.png" id="toolbar_closebtn">
+
+    </div>
+
+    <div id="measure_body">
+      <label for="distance">Distance</label>
+      <button id="distance" class="esri-widget--button esri-interactive esri-icon-measure-line"
+        title="Distance Measurement Tool"></button>
+      <label for="area">Area</label>
+      <button id="area" class="esri-widget--button esri-interactive esri-icon-measure-area"
+        title="Area Measurement Tool"></button>
+      <button id="clear" class="esri-widget--button esri-interactive esri-icon-trash"
+        title="Clear Measurements"></button>
+
+
+
+    </div>
+    <div class="esri-ui-corner  esri-component esri-measurement"></div>
+  </div>
+  <!-- <p id="toolbar_content">Choose any measure tool such as Distance and Area to perform the
+      corresponding measurement operation</p>  -->
+  <!-- ></button>
+  </div>
+   <div id="show-btn" class="esri-widget">
+      <img src="pics/legend.PNG" id="btn_Legend" title="Legend">
+      <img src="pics/sketch.PNG" id="btn_Sketch" title="Sketch tool">
+      <img src="pics/layerlist.PNG" id="btn_Layerlist" title="Layelist">
+      <img src="pics/basemap.PNG" id="btn_BasemapGallery" title="Basemap Gallery">
+      <img src="pics/measurement.PNG" id="btn_measurement" title="Measurement Tool">
+      <img src="pics/attrbute.PNG" id="btn_attributeTable" title="Feature Table">
+
+      <img src="pics/QUERY.PNG" id="btn_Query" title="Query Tool">
+
+    </div> -->
+
+
+  <!-- <label for="label_select_1" id="label_select_1" style="display:none">Select</label> -->
+  <div id="layer_Sel_container" style="display:none">
+    <div id="layer_Sel_head">
+      Layer Selection
+      <img src="pics/closebutton.png" id="layer_selclosebtn">
+
+    </div>
+    <label for="selectFeature">Select Layer</label>
+    <select id="selectFeature">
+      <!-- <option value="">Select layer</option> -->
+
+    </select>
+
+  </div>
+
+
+
+
+
+
+  <!-- <div id="query_layer_container" style="display:none">
+      <div id="query_layer_head">
+        Query Selection
+        <img src="pics/closebutton.png" id="queryLayer_closebtn">
+
+      </div>
+     
+      <label for="parking">Query Layer</label> 
+      <select id="parking">
+        <option value="">Select Parking Type</option>
+        <option value="op1">Car</option>
+        <option value="op2">Bike</option>
+        <option value="op3">Car & Bike</option>
+      </select>
+
+    </div> -->
+
+  <!-- <div class="container" > -->
+
+  <!-- <div class="container" style="display:none" >
+      <div class="header">Header
+      <img src="pics/closebutton.png" id="closebtn">
+     
+    </div>  
+     <div id="mainbody"></div>
+      
+   </div>  -->
+
+
+  <div id="query_layer_container" style="display:none">
+    <div id="query_layer_head">
+      Query Selection
+      <img src="pics/closebutton.png" id="queryLayer_closebtn">
+    </div>
+    <label for="parking">Query Option</label>
+    <select id="parking">
+      <option value="">Select Parking Type</option>
+      <option value="op1">Car</option>
+      <option value="op2">Bike</option>
+      <option value="op3">Car & Bike</option>
+    </select>
+  </div>
+
+
+
+  <div id="basemap_Container" style="display:none">
+    <div id="basemap_head">
+      Basemap Gallery
+      <img src="pics/closebutton.png" id="basemap_closebtn">
+
+    </div>
+  </div>
+  <div id="basemap_body" style="display:none"></div>
+
+
+  <div id="legend_Container" style="display:none">
+    <div id="legend_head">
+      Legend
+      <img src="pics/closebutton.png" id="legend_closebtn">
+    </div>
+  </div>
+  <div id="legend_body" style="display:none"></div>
+
+  <div id="sketch_Container" style="display:none">
+
+    <div id="sketch_head">
+      Sketch
+      <img src="pics/closebutton.png" id="sketch_closebtn">
+    </div>
+  </div>
+  <div id="sketch_body" style="display:none"></div>
+
+
+  <div id="WidgetBtn" style="display:none">
+    <button type="submit" class="esri-icon-legend" id="btn_Legend" title="Legend"> </button>
+    <button type="submit" class="esri-icon-authorize" id="btn_Sketch" title="Sketch tool"></button>
+    <button type="submit" class="esri-icon-layer-list" id="btn_Layerlist" title="Layerlist"> </button>
+    <!-- <button type="submit" class="esri-icon-collapse" id="btn_Layerlist_Collapse" title="Collapse" style="display:none"> </button> -->
+    <button type="submit" class="esri-icon-basemap" id="btn_BasemapGallery" title="Basemap Gallery"></button>
+    <button type="submit" class="esri-icon-measure" id="btn_measurement" title="Measurement Tool"></button>
+    <button type="submit" class="esri-icon-table" id="btn_attributeTable" title="Feature Table"></button>
+    <button type="submit" class="esri-icon-review" id="btn_Query" title="Query Tool"></button>
+  </div>
+
+
+
+  <button id="SpatialQRY_button" class=" esri-widget--button esri-icon-filter" title="Spatial query tool">
+  </button>
+
+  <div id="SpatialQRY_Sel_CONTAINER" style="display:none">
+    <div id="SpatialQRY_Sel_head">
+      Layer Selection
+      <img src="pics/closebutton.png" id="SpatialQRY_Selclosebtn">
+
+    </div>
+    <label for="selectFeature_SPATIALQRY">Select layer</label>
+    <select id="selectFeature_SPATIALQRY">
+      <!-- <option value="">Select layer</option>  -->
+    </select>
+
+    <div id="polygon_button_container" style="display:none">
+
+      <p id="selectFeature_SPATIALQRY_Content">Use the polygon drawing tool to select the required features</p>
+      </p>
+      <button id="polygon-button" class="esri-widget esri-widget--button esri-interactive"
+        title="Select Features Using Polygon">
+        <span class=" esri-widget--button esri-icon-polygon"></span> </button>
+
+    </div>
+  </div>
+
+
+  <button id="clear_graphic_button" class="esri-widget esri-widget--button esri-widget esri-interactive"
+    title="Clear selection">
+    <span class="esri-icon-erase"></span>
+  </button>
+  <!-- <div id="clear_graphic_button" class="esri-widget esri-widget--button esri-interactive" title="Clear Graphics/Selections">
+    <img src="pics/erase_icon.png"  class="widget_image">
+  </div> -->
+  <!-- <div id="spatial_Qry_button" class="esri-widget esri-widget--button esri-interactive" title="Spatial Query">
+    <img src="pics/query_new.png"  class="widget_image">
+  </div> -->
+
+
+  <!-- <img src="pics/legend.PNG" id="btn_Legend" title="Legend">
+    <img src="pics/sketch.PNG" id="btn_Sketch" title="Sketch tool">
+    <img src="pics/layerlist.PNG" id="btn_Layerlist" title="Layelist">
+    <img src="pics/basemap.PNG" id="btn_BasemapGallery" title="Basemap Gallery">
+    <img src="pics/measurement.PNG" id="btn_measurement" title="Measurement Tool">
+    <img src="pics/attrbute.PNG" id="btn_attributeTable" title="Feature Table">
+
+    <img src="pics/QUERY.PNG" id="btn_Query" title="Query Tool"> -->
+
+
+  <!-- <button type="submit" id="measure_tool">Measure Tool</button>
+      <button type="submit" id="attributeTab">Attribute Table</button> -->
+
+
+
+  <!-- <input type="submit" id="btn" value="Hide Widgets"> -->
+
+
+  <div id="layerlist_Container" style="display:none">
+    <div id="layerlist_head">Layerlist
+      <img src="pics/closebutton.png" id="layerlist_closebtn">
+    </div>
+
+  </div>
+
+  <div id="layerlist_body" style="display:none">
+  </div>
+
+
+  <div id="Tab_result_DIV" style="display:none">
+    <div id="tabHead">
+      Feature Data Table
+      <!--  <p id="label_tab_head">Feature Data Table</p>  -->
+
+      <img src="pics/closebutton.png" id="close_attribute_Tab" onclick="close_Tab_Resut_DIV();" title="Close table">
+    </div>
+    <div id="selectedCount_Container"> <span id="selectedCount"></span> </div>
+
+    <div id="Tab_result_MAINHead">
+      <div id="Tab_result_Head1">
+        <table id="Tab_result_Head_data_1" style="align-content: center">
+        </table>
+      </div>
+      <div id="Tab_result_Head2">
+        <table id="Tab_result_Head_data_2" style="align-content: center">
+        </table>
+      </div>
+      <div id="Tab_result_Head3">
+        <table id="Tab_result_Head_data_3" style="align-content: center">
+        </table>
+      </div>
+      <div id="Tab_result_Head4">
+        <table id="Tab_result_Head_data_4" style="align-content: center">
+        </table>
+      </div>
+    </div>
+
+    <div id="Tab_result__MAINContainer">
+      <div id="Tab_result_Container1" class="top-margin">
+        <table id="Tab_result_spatialQRY_1" style="align-content: center;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Age</th>
+            </tr>
+          </tfoot>
+        
+      </div>
+      <div id="Tab_result_Container2" class="top-margin">
+        <table id="Tab_result_spatialQRY_2" style="align-content: center;">
+        </table>
+      </div>
+      <div id="Tab_result_Container3" class="top-margin">
+        <table id="Tab_result_spatialQRY_3" style="align-content: center;">
+        </table>
+      </div>
+      <div id="Tab_result_Container4" class="top-margin">
+        <table id="Tab_result_spatialQRY_4" style="align-content: center;">
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- 
+
+  <div id="update" class="esri-widget esri-hidden">
+    <div id="form" class="scroller esri-component"></div>
+    <input
+      type="button"
+      class="esri-button"
+      value="Update assessment"
+      id="btn_SPATIALQRYResult"
+    />
+  </div> -->
+
+  <!-- <div class="container">
+    <table id="exampleTable" class="table table-striped table-bordered" style="width: 70%">
+      <thead id="thead">
+        <tr style="background-color: #1573ff">
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+      
+        </tbody>
+        
+    </table> -->
+  <!-- </div> -->
+  <!-- Apply Edits Stylesxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */ -->
+
+  <!-- <div id="editArea" class="editArea-container esri-widget--panel">
+    <div id="addFeatureDiv" style="display:block;">
+      <h3 class="list-heading">Current Project Layer</h3>
+
+      <div id="addTemplatesDiv" style="background:#fff;"></div>
+    </div>
+
+    <div id="featureUpdateDiv" style="display:none; margin-top: 1em;">
+      <div id="attributeArea">
+        <div id="formDiv"></div>
+        <input type="button" class="esri-button" value="Update incident info" id="btnUpdate" />
+      </div>
+      <br />
+      <div id="deleteArea">
+        <input type="button" class="esri-button" value="Delete incident" id="btnDelete" />
+      </div>
+    </div>
+
+    <div id="updateInstructionDiv" style="text-align:center; display:block">
+      <p class="or-wrap"><span class="or-text">Or</span></p>
+      <p id="selectHeader">Select an incident to edit or delete.</p>
+    </div>
+  </div> -->
+
+
+
+  <!-- Apply Edits Stylesxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */ -->
+
+</body>
+
+</html>
