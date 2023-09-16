@@ -1,6 +1,4 @@
 /*
-Hexamap Solutions Pvt. Ltd., 
-Developed For: Hexamap Solutions, Chennai
  ------------------------------------------------------------ 
 Creation Date : 20-10-2022
 Creator Name : Sreenidhi S
